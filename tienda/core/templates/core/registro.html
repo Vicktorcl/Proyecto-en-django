@@ -1,0 +1,70 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+
+    
+    <div class="container border border-dark p-4">
+        <h2 class="text-center">Registro de Usuario</h2>
+        <form method="get" id="formulario_registro" action="">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="rut">Rut</label>
+                            <input type="text" class="form-control" id="rut" name="rut" placeholder="rut ej: 00000000-0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombres</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre de Usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellidos</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellidos de Usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input type="text" class="form-control" id="correo" name="correo" placeholder="Correo de Usuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <textarea class="form-control" id="direccion" name="direccion" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <p>Deseo suscribirme con un aporte de $30000 mensuales y obtener un 5% de descuento en mis compras</p>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" id="password1" name="password1" placeholder="Contraseña" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="password2" name="password2" placeholder="Contraseña" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                    <div class="col">
+                        <div class="col-md-6" style="margin-left: 230px;">
+                            <!-- Imagen alineada a la derecha -->
+                            <img src="{% static 'img/logo.jpg' %}" alt="Descripción de la imagen" class="float-right" >
+                            <br>
+                            <label for="formFile" class="form-label"></label>
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock content %}
+
+<script src="{% static 'core/js/script.js' %}"></script>
+</html>
