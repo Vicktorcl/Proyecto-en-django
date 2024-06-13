@@ -1,11 +1,26 @@
+<<<<<<< HEAD
 from django.shortcuts import redirect, render
 from .models import Producto
 from .forms import IngresarForm
+=======
+from django.shortcuts import redirect, render, get_object_or_404
+from .models import Producto
+>>>>>>> 179383a4078bfb7cd33f8256051d58e87a1e9d02
 
 def inicio(request):
     productos = Producto.objects.all().order_by('nombre')
     data = { 'productos': productos }
+<<<<<<< HEAD
     return render(request, 'core/inicio.html', data)
+=======
+    return render(request, "core/inicio.html", data)
+
+
+def ficha(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    data = { 'producto': producto }
+    return render(request, "core/ficha.html", data)
+>>>>>>> 179383a4078bfb7cd33f8256051d58e87a1e9d02
 
 
 def ficha(request, producto_id):
