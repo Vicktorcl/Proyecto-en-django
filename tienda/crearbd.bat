@@ -1,4 +1,4 @@
-call C:\ProyectosDjango\tienda_venv\Scripts\activate.bat
+call C:\ProyectosDjango\tienda\.venv\Scripts\activate.bat
 call python manage.py runscript -v3 eliminar_tablas
 call rmdir /s /q C:\ProyectosDjango\tienda\core\migrations
 call python manage.py makemigrations

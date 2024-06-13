@@ -1,17 +1,42 @@
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import redirect, render
+from .models import Producto
+from .forms import IngresarForm
 
 def inicio(request):
-    return render(request, "core/inicio.html")
+    productos = Producto.objects.all().order_by('nombre')
+    data = { 'productos': productos }
+    return render(request, 'core/inicio.html', data)
 
+
+def ficha(request, producto_id):
+    producto = Producto.objects.get(id=producto_id)
+    data = { 'producto': producto }
+    return render(request, 'core/ficha.html', data)
+
+def ingresar(request):
+    # if request.user.is_authenticated:
+    #     return redirect(index)
+    form = IngresarForm()
+    
+    if request.method == 'POST':
+        form = IngresarForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            #hacer despues
+            
+    return render(request, 'core/ingresar.html', {
+        'form': IngresarForm(),
+    })
+        
+
+        
 def nosotros(request):
     return render(request, 'core/nosotros.html')
 
-def ficha(request):
-    return render(request, "core/ficha.html")
 
 def registro(request):
     return render(request, 'core/registro.html')
 
-def ingresar(request):
-    return render(request, 'core/ingresar.html')
+
 

@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
-from core.templatetags.custom_filters import formatear_dinero
+#from core.templatetags.custom_filters import formatear_dinero
 from django.db import models
 from django.db.models import Min
 from django.db import connection
@@ -126,7 +126,7 @@ class Carrito(models.Model):
         ordering = ['cliente', 'producto']
 
     def __str__(self):
-        return f'{self.id} Carrito de {self.cliente.usuario.first_name} {self.cliente.usuario.last_name} (Producto {self.producto.categoria.nombre} - {self.producto.nombre} - {formatear_dinero(self.precio)})'
+        return f'{self.id} Carrito de {self.cliente.usuario.first_name} {self.cliente.usuario.last_name} (Producto {self.producto.categoria.nombre} - {self.producto.nombre} - {self.precio})'
     
     def acciones():
         return {

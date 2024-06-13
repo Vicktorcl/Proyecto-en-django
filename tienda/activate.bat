@@ -1,1 +1,1 @@
-call C:\ProyectosDjango\Tienda_venv\Scripts\activate.bat
+call C:\ProyectosDjango\tienda\.venv\Scripts\activate.bat
