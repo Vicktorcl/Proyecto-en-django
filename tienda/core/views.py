@@ -38,5 +38,20 @@ def nosotros(request):
 def registro(request):
     return render(request, 'core/registro.html')
 
+def api_ropa(request):
+    return render(request, 'core/api_ropa.html')
+
+def misdatos_cliente(request):
+    return render(request, 'core/misdatos_cliente.html')
+
+def misscompras(request):
+    return render(request, 'core/misscompras.html')
+
+def administrar_tienda(request):
+    return render(request, 'core/administrar_tienda.html')
+
+def carrito(request):
+    return render(request, 'core/carrito.html')
+
 
 

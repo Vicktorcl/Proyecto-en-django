@@ -1,7 +1,8 @@
 from django.urls import path
 #from django.views.generic.base import TemplateView
 #from django.contrib.auth import views as auth_views
-from .views import inicio, ficha, ingresar, registro, nosotros
+from .views import inicio, ficha, ingresar, registro, nosotros, carrito
+from .views import api_ropa, misdatos_cliente, misscompras, administrar_tienda
 # from .views import admin_productos
 # from .views import admin_usuarios, admin_bodega, ventas, boleta, ingresar, admin_usuarios
 # from .views import misdatos, miscompras, salir, carrito, ficha
@@ -16,6 +17,11 @@ urlpatterns = [
     path('ingresar', ingresar, name='ingresar'),
     path('registro', registro, name='registro'),
     path('nosotros', nosotros, name='nosotros'),
+    path('api_ropa', api_ropa, name='api_ropa'),
+    path('misdatos_cliente', misdatos_cliente, name='misdatos_cliente'),
+    path('misscompras', misscompras, name='misscompras'),
+    path('administrar_tienda', administrar_tienda, name='administrar_tienda'),
+    path('carrito', carrito, name='carrito'),
 
     # path('admin_productos/<accion>/<id>', admin_productos, name='admin_productos'),
     # path('admin_usuarios/<accion>/<id>', admin_usuarios, name='admin_usuarios'),
