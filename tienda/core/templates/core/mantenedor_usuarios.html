@@ -1,0 +1,164 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <div class="container border border-dark p-4">
+        <h2 class="text-center">Mantenedor Usuarios</h2>
+        <form id="formulario_usuarios" action="" method="POST">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="id">ID</label>
+                            <input type="text" class="form-control" id="id" name="id" placeholder="ID" required>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" checked type="radio" id="cliente_chbx" name="rol" value="cliente">
+                            <label class="form-check-label" for="cliente_chbx">Cliente</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="admin_chbx" name="rol" value="administrador">
+                            <label class="form-check-label" for="admin_chbx">Administrador</label>
+                          </div>
+                          
+                          
+                        <div class="form-group">
+                            <label for="rut">Rut</label>
+                            <input type="text" class="form-control" id="rut" name="rut" placeholder="rut ej: 00000000-0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombres</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre de Usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellidos</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellidos de Usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input type="text" class="form-control" id="correo" name="correo" placeholder="Correo de Usuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <textarea class="form-control" id="direccion" name="direccion" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-check">
+
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                
+                <p>Deseo suscribirme con un aporte de $30000 mensuales y obtener un 5% de descuento en mis compras</p>
+            </label>
+                        </div>
+
+                        <div class="form-group row align-items-center">
+                            <label for="password1" class="form-label">Contraseña</label>
+                            <div class="col-sm-8">
+                                
+                            </div>
+                            
+                        </div>
+                        
+                        
+                       
+
+                        <button type="submit" class="btn btn-primary" style="margin:5px">Guardar</button>
+                        <button type="submit" class="btn btn-primary" style="margin:5px">Nuevo</button>
+                        <button type="submit" class="btn btn-primary" style="margin:5px">Eliminar</button>
+                        <button type="button" class="btn btn-primary" style="margin-top: 9px;">Generar Contraseña</button>
+                    </form>
+                </div>
+                <div class="col">
+                    <div class="col-md-6" style="margin-left: 230px;">
+                        <!-- Imagen alineada a la derecha -->
+                        <img src="img/logo.jpg" alt="Descripción de la imagen" class="float-right" >
+                        <br>
+                        
+                        <label for="formFile" class="form-label"></label>
+                        <input class="form-control" type="file" id="formFile">
+                        
+
+                    </div>
+
+            </div>
+      
+<!--Tabla-->
+<div class="container">
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tipo usuario</th>
+                <th>Rut</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+                <th>Dirección</th>
+                <th>Con subscripción</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Cliente</td>
+                <td>12.345.678-9</td>
+                <td>Mario</td>
+                <td>González</td>
+                <td>mario@example.com</td>
+                <td>Calle Falsa 123</td>
+                <td>Sí</td>
+                <td>
+                    <img src="img/hombre1.jpg" alt="Imagen 1" style="width: 60px;">
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Cliente</td>
+                <td>23.456.789-0</td>
+                <td>Luigi</td>
+                <td>García</td>
+                <td>luigi@example.com</td>
+                <td>Avenida Principal 456</td>
+                <td>No</td>
+                <td>
+                    <img src="img/hombre2.jpg" alt="Imagen 1" style="width: 60px;">
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Administrador</td>
+                <td>34.567.890-1</td>
+                <td>Peach</td>
+                <td>López</td>
+                <td>peach@example.com</td>
+                <td>Plaza Central 789</td>
+                <td>Sí</td>
+                <td>
+                    <img src="img/hombre3.jpg" alt="Imagen 1" style="width: 60px;">
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Cliente</td>
+                <td>45.678.901-2</td>
+                <td>Yoshi</td>
+                <td>Martínez</td>
+                <td>yoshi@example.com</td>
+                <td>Camino Secreto 101</td>
+                <td>No</td>
+                <td>
+                    <img src="img/hombre4.jpg" alt="Imagen 1" style="width: 60px;">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+</div>
+</div>
+</div>
+
+{% endblock content %}

@@ -1,160 +1,75 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
-
-
-
-            <div class="container border border-dark p-4">
-              <h2 class="text-center">Mantenedor de productos</h2>
-                <div class="row">
-                  <div class="col">
-            
-              <form class="needs-validation" method="POST" id="formulario_productos" action="">
-
-
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div>
-                                <label for="id" class="form-label">ID</label>
-                                <input type="text" class="form-control" id="id" name="id" placeholder="Num ID">
-                              </div>
-                           
-                            <div>
-                              <label for="categoria">Categoría</label>
-                              <select class="form-select" aria-label="Default select example" name="categoria" id="categoria">
-                                <option value="">Categoría</option>
-                                <option value="1">Accion</option>
-                                <option value="2">Fps</option>
-                                <option value="3">Aventura</option>
-                              </select>
-                            </div>
-                              <div>
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nom.Producto">
-                          </div>
-            
-                          <div class="mb-3">
-                            <label for="descripcion" class="form-label">Descripción</label>
-                            <textarea class="form-control" id="descripcion" rows="3" name="descripcion"></textarea>
-                          </div>
-
-                          <div>
-                            <label for="precio" form="form-label">Precio</label>
-                            <input type="number" class="form-control" id="precio" name="precio" placeholder="Precio">
-                          </div>
-
-                            <div>
-                              <label for="desc_subscriptor" class="form-label">Descuento Suscriptor</label>
-                              <input type="number" class="form-control" id="desc_subscriptor" name="desc_subscriptor" placeholder="5%">
-                            </div>
-                            <div>
-                                <label for="desc_oferta">Descuento por oferta</label>
-                                <input type="number" class="form-control" id="desc_oferta" name="desc_oferta" placeholder="%">
-                        </div>
-                      </div>
-                        <div class="col">
-                          <div class="col-md-6" style="margin-left: 230px;">
-                              <!-- Imagen alineada a la derecha -->
-                              <img src="img/logo.jpg" alt="Descripción de la imagen" class="float-right" >
-                              <br>
-                              
-                              <div class="mb-4">
-                                <label for="formFile" class="form-label"></label>
-                                <input class="form-control" type="file" id="formFile">
-                              </div>
-                              
-                            
-                              </button>
-                              
-                  
-                            </div>
-                      </div>
-                        
-                      </div>
-                    </div>
-
-                            
-            
-            <br>
-         <!--Boton-->
-            <div class="row">
-                <div class="col" id="botones">
-                    <button type="submit" class="btn btn-primary" id="guardar">
-                        Guardar
-                    </button>
-                    <button type="reset" class="btn btn-primary">
-                        Nuevo
-                    </button>
-                    <button type="reset" class="btn btn-primary">
-                        Eliminar
-                    </button>
-
+<div class="container border border-dark p-4">
+    <h2 class="text-center">Mantenedor de productos</h2>
+    <div class="row">
+        <div class="col-md-8">
+            <form class="needs-validation" method="POST" enctype="multipart/form-data" id="formulario_productos" >
+              {% csrf_token %}
+                <div>
+                    {{ form|as_bootstrap_form }}
                 </div>
-            </div> 
-          </form>
+               
+                <div class="row mt-3">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary" id="guardar">Guardar</button>
+                        <button type="reset" class="btn btn-primary">Nuevo</button>
+                        <a type="submit" class="btn btn-primary" href="{% url 'productos' 'eliminar' form.instance.id %}">Eliminar</a>
+                    </div>
+                </div>
+                
+            </form>
+            
           </div>
+          <div class="col-md-4 text-center">
+            <img src="{% static 'core/img/sin-imagen.png' %}" alt="Descripción de la imagen" class="img-fluid">
         </div>
+    </div>
+</div>
 
-      </div>
-      
+ <div>
+  {% for message in messages %}
+    {{ message }}
+  {% endfor %}
+ </div>
 <!--Tabla-->
 <div class="container">
-  <table class="table mt-4">
-      <thead>
-          <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Descripción</th>
-              <th>Precio</th>
-              <th>%Desc Suscriptor</th>
-              <th>%Desc Oferta</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td>11</td>
-              <td>Super Mario Maker 2</td>
-              <td>Videojuego Super Mario Maker 2</td>
-              <td>$64999</td>
-              <td>5%</td>
-              <td>2%</td>
-              
-          </tr>
-          <tr>
-            <td>12</td>
-            <td>Paper Mario</td>
-            <td>Videojuego Paper Mario</td>
-            <td>$65999</td>
-            <td>5%</td>
-            <td>2%</td>
-            
-        </tr>
-        <tr>
-          <td>13</td>
-          <td>Pokemon Brillant Diamond</td>
-          <td>Videojuego Pokemon Brillant Diamond</td>
-          <td>$76999</td>
-          <td>5%</td>
-          <td>2%</td>
-          
-      </tr>
-      <tr>
-        <td>14</td>
-        <td>Pokemon Snap</td>
-        <td>Videojuego Pokemon Snap</td>
-        <td>$54999</td>
-        <td>5%</td>
-        <td>2%</td>
-        
-    </tr>
-
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Categoria</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>%Desc Suscriptor</th>
+                <th>%Desc Oferta</th>
+                <th>imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for producto in productos %}
+              <tr>
+                  <td>{{ producto.id }}</td>
+                  <td>{{ producto.categoria}}</td>
+                  <td>{{ producto.nombre}}</td>
+                  <td>{{ producto.descripcion}}</td>
+                  <td>{{ producto.precio}}</td>
+                  <td>{{ producto.descuento_subscriptor}}</td>
+                  <td>{{ producto.descuento_oferta}}</td>
+                  <td>
+                    <img height="75px" src="/media/{{producto.imagen}}"/>
+                  </td>
+              </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
-</tbody>
-</table>
-</div>
-    
-
+{% block script %}
+  <script src="{% static 'core/js/validador_productos.js' %}" type="text/javascript"></script>
+{% endblock script %}
 
 {% endblock content %}

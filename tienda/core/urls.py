@@ -3,6 +3,7 @@ from django.urls import path
 #from django.contrib.auth import views as auth_views
 from .views import inicio, ficha, ingresar, registro, nosotros, carrito
 from .views import api_ropa, misdatos_cliente, misscompras, administrar_tienda
+from .views import ventas, productos, bodega, boleta, mantenedor_usuarios
 # from .views import admin_productos
 # from .views import admin_usuarios, admin_bodega, ventas, boleta, ingresar, admin_usuarios
 # from .views import misdatos, miscompras, salir, carrito, ficha
@@ -17,11 +18,20 @@ urlpatterns = [
     path('ingresar', ingresar, name='ingresar'),
     path('registro', registro, name='registro'),
     path('nosotros', nosotros, name='nosotros'),
+    
+    path('productos/<accion>/<id>', productos, name='productos'),
+    
+        # /<accion>/<id>
+        
     path('api_ropa', api_ropa, name='api_ropa'),
     path('misdatos_cliente', misdatos_cliente, name='misdatos_cliente'),
     path('misscompras', misscompras, name='misscompras'),
     path('administrar_tienda', administrar_tienda, name='administrar_tienda'),
     path('carrito', carrito, name='carrito'),
+    path('boleta', boleta, name='boleta'),
+    path('ventas', ventas, name='ventas'),
+    path('bodega', bodega, name='bodega'),
+    path('mantenedor_usuarios', mantenedor_usuarios, name='mantenedor_usuarios'),
 
     # path('admin_productos/<accion>/<id>', admin_productos, name='admin_productos'),
     # path('admin_usuarios/<accion>/<id>', admin_usuarios, name='admin_usuarios'),
@@ -32,9 +42,7 @@ urlpatterns = [
     # path('ventas', ventas, name='ventas'),
     # path('boleta/<nro_boleta>', boleta, name='boleta'),
     # path('cambiar_estado_boleta/<nro_boleta>/<estado>', cambiar_estado_boleta, name='cambiar_estado_boleta'),
-    # path('misdatos', misdatos, name='misdatos'),
     # path('mipassword', mipassword, name='mipassword'),
-    # path('miscompras', miscompras, name='miscompras'),
     # path('salir', salir, name='salir'),
     # path('carrito', carrito, name='carrito'),
     # path('eliminar_producto_en_carrito/<carrito_id>', eliminar_producto_en_carrito, name='eliminar_producto_en_carrito'),

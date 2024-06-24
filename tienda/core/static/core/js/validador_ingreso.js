@@ -2,7 +2,7 @@ $(document).ready(function() {
     // Validar formulario con JQuery
     $("#formulario-ingreso").validate({
       rules: {
-        usuario: {
+        username: {
           required: true,
         },
         password: {
@@ -12,8 +12,8 @@ $(document).ready(function() {
         },
       }, // --> Fin de reglas
       messages: {
-        usuario: {
-          required: "El nombre de usuario es un campo requerido"
+        username: {
+          required: "El nombre de usuario es un campo requerido",
         },
         password: {
           required: "La contraseña es un campo requerido",

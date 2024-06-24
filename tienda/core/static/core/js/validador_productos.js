@@ -49,17 +49,20 @@ $(document).ready(function() {
             number:true,
             min:0,
           },
-          desc_subscriptor:{
+          descuento_subscriptor:{
             required: true,
             number:true,
             min:0,
             max:100,
           },
-          desc_oferta:{
+          descuento_oferta:{
             required: true,
             number:true,
             min:0,
             max:100,
+          },
+          imagen:{
+            required: true,
           },
   
         }, // --> Fin de reglas
@@ -85,18 +88,21 @@ $(document).ready(function() {
             number: "El campo debe ser un numero",
             min: "El precio debe ser mayor o igual que 0"
           },
-          desc_subscriptor:{
+          descuento_subscriptor:{
             required: "Este campo es obligatorio",
             number: "El campo debe ser un numero",
             min: "El porcentaje suscriptor debe ser mayor o igual que 0",
             max: "El porcentaje suscriptor debe ser menor o igual que 100",
             
           },
-          desc_oferta:{
+          descuento_oferta:{
             required: "Este campo es obligatorio",
             number: "El campo debe ser un numero",
             min: "El porcentaje oferta debe ser mayor o igual que 0",
             max: "El porcentaje oferta debe ser menor o igual que 100",
+          },
+          imagen:{
+            required: "la imagen es un campo requerido",
           },
         },
       });
