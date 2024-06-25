@@ -10,7 +10,7 @@ class ProductoForm(ModelForm):
         fields = '__all__'
         widgets = {
             'descripcion': forms.Textarea(),
-            'imagen': forms.FileInput(attrs={'class': 'd-none'})
+            'imagen': forms.FileInput()
         }
         labels = {
             'nombre': 'Nombre',

@@ -28,10 +28,39 @@ def ingresar(request):
             #hacer despues
             
     return render(request, 'core/ingresar.html', {
-        'form': form(),
+        'form': form
     })
-        
+
+
 def productos(request, accion, id):
+    
+    if request.method == 'POST':
+        if accion == 'crear':
+            form = ProductoForm(request.POST, request.FILES)
+        elif accion == 'actualizar':
+            form = ProductoForm(request.POST, request.FILES, instance=Producto.objects.get(id=id))
+        if form.is_valid():
+            producto = form.save()
+            ProductoForm(instance=producto)
+            messages.success(request, f'El producto "{str(producto)}" se logró {accion} correctamente')
+            return redirect(productos, 'actualizar', producto.id)
+        else:
+            messages.error(request, 'No fue posible guardar el producto')
+    if request.method == 'GET':
+        if accion == 'crear':
+            form = ProductoForm()
+        elif accion == 'actualizar':
+            form = ProductoForm(instance=Producto.objects.get(id=id))
+        elif accion == 'eliminar':
+            Producto.objects.get(id=id).delete()
+            messages.success(request, 'El producto fue eliminado correctamente')
+            return redirect(productos, 'crear', 0)
+    lista = Producto.objects.all()
+    
+    return render(request, "core/productos.html", {
+        'form': form,
+        'productos': lista
+    })
     
     if request.method == 'POST':
         if accion == 'crear':
@@ -44,19 +73,20 @@ def productos(request, accion, id):
             messages.success(request, f'El producto "{str(producto)}" se logró {accion} correctamente')
             return redirect (productos, 'actualizar', producto.id)
         else:
-            messages.error(request, 'El producto no se pudo guardar correctamente')
+            messages.error(request, 'No fué posible guardar el producto')
     if request.method == 'GET':
         if accion == 'crear':
             form = ProductoForm()
         elif accion == 'actualizar':
             form = ProductoForm(instance=Producto.objects.get(id=id))
         elif accion == 'eliminar':
-            Producto.objects.get(id=id).delete()
+            producto = Producto.objects.get(id=id)
+            nombre = producto.nombre
+            producto.delete()
             messages.success(request, 'El producto fue eliminado correctamente')
             return redirect(productos, 'crear', 0)
-    
-    
     lista = Producto.objects.all()
+    
     return render(request, 'core/productos.html', {
         'form': form,
         'productos': lista
@@ -89,8 +119,6 @@ def boleta(request):
 
 def ventas(request):
     return render(request, 'core/ventas.html')
-
-
 
 def bodega(request):
     return render(request, 'core/bodega.html')
